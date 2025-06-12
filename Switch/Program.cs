@@ -1,24 +1,14 @@
-﻿enum State { On, Off }
-
-class Lamp(State State)
+﻿namespace Switch
 {
-    public void Operate()
+    internal class Program
     {
-        State = State == State.On ? State.Off : State.On;
-        Console.WriteLine("Luz " + (State == State.On ? "Ligada" : "Deslgiada"));
-    }
-}
+        static void Main(string[] args)
+        {
+            IDevice lamp = new Lamp(StateEnum.Off);
+            Switch _switch = new Switch(lamp);
 
-class Switch
-{
-    private Lamp lamp;
-    public Switch(Lamp device)
-    {
-        lamp = device;
-    }
-
-    public void Press()
-    {
-        lamp.Operate();
+            _switch.Press();
+            _switch.Press();
+        }
     }
 }
